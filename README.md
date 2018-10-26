@@ -209,7 +209,7 @@ SO there it is. A complete multiple regression analysis using nothing but numpy.
 
 ## Level up - Optional 
 
-* Calculated the R_squared and extended R_squared for above experiment. 
+* Calculated the R_squared and adjusted R_squared for above experiment. 
 * Plot the residuals (similar to statsmodels) and comment on the variance and heteroscedascticity. 
 * Run the experiment in statsmodels and compare the performance of both approaches in terms of computational cost.
 
