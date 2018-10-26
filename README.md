@@ -1,5 +1,5 @@
 
-# Regression with Linear Algebra and Pure NumPy - Lab
+# Regression with Linear Algebra - Lab
 
 ## Introduction
 
@@ -7,13 +7,15 @@ In this lab, we shall apply regression analysis using simple matrix manipulation
 
 In order to make this experiment interesting. We shall use NumPy at every single stage of this experiment i.e. loading data, creating matrices, performing test train split, model fitting and evaluations.  
 
-## Objectives:
+## Objectives
 
-* Use linear algebra to apply simple regression modeling in Python and NumPy only.
+You will be able to:
+
+* Use linear algebra to apply simple regression modeling in Python and NumPy only
 * Apply train/test split using permutations in NumPy
 * Use matrix algebra with inverses and dot products to calculate the beta
-* Make predictions from the fitted model using previously unseen input features. 
-* Evaluate the fitted model by calculating the error between real and predicted values.
+* Make predictions from the fitted model using previously unseen input features 
+* Evaluate the fitted model by calculating the error between real and predicted values
 
 
 First let's import necessary libraries 
@@ -213,7 +215,6 @@ SO there it is. A complete multiple regression analysis using nothing but numpy.
 * Plot the residuals (similar to statsmodels) and comment on the variance and heteroscedascticity. 
 * Run the experiment in statsmodels and compare the performance of both approaches in terms of computational cost.
 
-## Conclusion
-
+## Summary
 
 So there we have it. A predictive model for predicting house prices in a given dataset. Remember this is a very naive implementation of regression modeling. The purpose here was to get an introduction to the applications of linear algebra into machine learning and predictive analysis. We still have a number of shortcomings in our modeling approach and we can further apply a number of data modeling techniques to improve this model. 
