@@ -183,9 +183,9 @@ print(beta)
 #   1.28802060e+04  1.09853850e+04  6.14947126e+03  1.05813305e+04]
 ```
 
-    [7.13503312e+03 3.14678249e+00 3.28225971e+02 1.28839251e+04
-     6.68332755e+03 3.44682885e+03 3.19440776e+03 5.07824499e+03
-     1.32822228e+04 1.10098716e+04 2.88253206e+03 9.16916600e+03]
+    [-5.22662562e+03  3.62250360e+00  2.35571476e+03  1.57119761e+04
+      5.30101183e+03  7.85939505e+03  4.13766881e+03  4.99656442e+03
+      1.02352747e+04  1.35885559e+04  3.92215523e+03  6.35056198e+03]
 
 
 ## Step 4: Make Predictions
@@ -232,7 +232,7 @@ plt.show()
 ```
 
 
-![png](index_files/index_14_0.png)
+    <matplotlib.figure.Figure at 0x10bc9f3c8>
 
 
 This doesn't look so bad, does it ? Our model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of y_test individually. That will help us calculate the RMSE value (Root Mean Squared Error) for our model. 
@@ -261,7 +261,7 @@ root_mean_sq_err
 
 
 
-    16401.913562758735
+    14018.287445914655
 
 
 
@@ -274,15 +274,15 @@ The above error is clearly in terms of the dependant variable i.e. the final hou
 
 
 ```python
-root_mean_sq_err/(data[:,-1].max() - data[:,-1].min())
+root_mean_sq_err/(y_train.max() - y_train.min())
 
-# 0.09940553674399233
+# 0.08495931785402822
 ```
 
 
 
 
-    0.09940553674399233
+    0.08495931785402822
 
 
 
