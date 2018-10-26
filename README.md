@@ -1,5 +1,5 @@
 
-# Regression with Linear Algebra and Pure NumPy - Lab
+# Regression with Linear Algebra - Lab
 
 ## Introduction
 
@@ -7,14 +7,15 @@ In this lab, we shall apply regression analysis using simple matrix manipulation
 
 In order to make this experiment interesting. We shall use NumPy at every single stage of this experiment i.e. loading data, creating matrices, performing test train split, model fitting and evaluations.  
 
-## Objectives:
+## Objectives
 
-* Use linear algebra to apply simple regression modeling in Python and NumPy only.
+You will be able to:
+
+* Use linear algebra to apply simple regression modeling in Python and NumPy only
 * Apply train/test split using permutations in NumPy
 * Use matrix algebra with inverses and dot products to calculate the beta
-* Make predictions from the fitted model using previously unseen input features. 
-* Evaluate the fitted model by calculating the error between real and predicted values.
-
+* Make predictions from the fitted model using previously unseen input features 
+* Evaluate the fitted model by calculating the error between real and predicted values
 
 First let's import necessary libraries 
 
@@ -94,27 +95,6 @@ data[:5,:]
 #         6.10e+04]])
 ```
 
-
-
-
-    array([[1.00e+00, 5.85e+03, 3.00e+00, 1.00e+00, 2.00e+00, 1.00e+00,
-            0.00e+00, 1.00e+00, 0.00e+00, 0.00e+00, 1.00e+00, 0.00e+00,
-            4.20e+04],
-           [1.00e+00, 4.00e+03, 2.00e+00, 1.00e+00, 1.00e+00, 1.00e+00,
-            0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
-            3.85e+04],
-           [1.00e+00, 3.06e+03, 3.00e+00, 1.00e+00, 1.00e+00, 1.00e+00,
-            0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
-            4.95e+04],
-           [1.00e+00, 6.65e+03, 3.00e+00, 1.00e+00, 2.00e+00, 1.00e+00,
-            1.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
-            6.05e+04],
-           [1.00e+00, 6.36e+03, 2.00e+00, 1.00e+00, 1.00e+00, 1.00e+00,
-            0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
-            6.10e+04]])
-
-
-
 ## Step 2: Perform a 80/20 test train Split
 
 Explore NumPy's official documentation to manually split a dataset using `numpy.random.shuffle()`,  `numpy.random.permutations()` or using simple resampling method. 
@@ -149,11 +129,6 @@ print ('x_train, y_train, x_test, y_test:', x_train.shape, y_train.shape, x_test
 # x_train, y_train, x_test, y_test: (437, 12) (437,) (109, 12) (109,)
 ```
 
-    Raw data Shape:  (546, 13)
-    Train/Test Split: (437, 13) (109, 13)
-    x_train, y_train, x_test, y_test: (437, 12) (437,) (109, 12) (109,)
-
-
 ## Step 3: Calculate the `beta` 
 
 With our X and y in place, We can now compute our beta values with x_train and y_train as:
@@ -182,11 +157,6 @@ print(beta)
 #   5.75279185e+03  7.82810082e+03  3.73584043e+03  6.51098935e+03
 #   1.28802060e+04  1.09853850e+04  6.14947126e+03  1.05813305e+04]
 ```
-
-    [-5.22662562e+03  3.62250360e+00  2.35571476e+03  1.57119761e+04
-      5.30101183e+03  7.85939505e+03  4.13766881e+03  4.99656442e+03
-      1.02352747e+04  1.35885559e+04  3.92215523e+03  6.35056198e+03]
-
 
 ## Step 4: Make Predictions
 Great , we now have a set of coefficients that describe the linear mappings between X and y. We can now use the calculated beta values  with the test datasets that we left out to calculate y predictions. 
@@ -231,10 +201,6 @@ plt.legend()
 plt.show()
 ```
 
-
-    <matplotlib.figure.Figure at 0x10bc9f3c8>
-
-
 This doesn't look so bad, does it ? Our model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of y_test individually. That will help us calculate the RMSE value (Root Mean Squared Error) for our model. 
 ### Root Mean Squared Error
 Here is the formula for this again. 
@@ -258,13 +224,6 @@ root_mean_sq_err = np.sqrt(mean_sq_err)
 root_mean_sq_err
 ```
 
-
-
-
-    14018.287445914655
-
-
-
 ### Normalized Root Mean Squared Error
 The above error is clearly in terms of the dependant variable i.e. the final house price. We can also use a normlized mean squared error in case of multiple regression which can be calculated from RMSE using following formula:
 
@@ -279,13 +238,6 @@ root_mean_sq_err/(y_train.max() - y_train.min())
 # 0.08495931785402822
 ```
 
-
-
-
-    0.08495931785402822
-
-
-
 SO there it is. A complete multiple regression analysis using nothing but numpy. Having good programming skills in numpy would allow to dig deeper into analytical algorithms in machine learning and deep learning. Using matrix multiplication techniques we saw here, we can easily build a whole neural network from scratch. 
 
 ## Level up - Optional 
@@ -294,6 +246,6 @@ SO there it is. A complete multiple regression analysis using nothing but numpy.
 * Plot the residuals (similar to statsmodels) and comment on the variance and heteroscedascticity. 
 * Run the experiment in statsmodels and compare the performance of both approaches in terms of computational cost.
 
-## Conclusion
+## Summary
 
 So there we have it. A predictive model for predicting house prices in a given dataset. Remember this is a very naive implementation of regression modeling. The purpose here was to get an introduction to the applications of linear algebra into machine learning and predictive analysis. We still have a number of shortcomings in our modeling approach and we can further apply a number of data modeling techniques to improve this model.
