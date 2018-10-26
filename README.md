@@ -215,4 +215,5 @@ SO there it is. A complete multiple regression analysis using nothing but numpy.
 
 ## Conclusion
 
-So there we have it. A predictive model for predicting house prices in a given dataset, with an average error of roughly 10,000 dollars. Remember this is a very naive implementation of regression modeling. The purpose here was to get an introduction to the applications of linear algebra into machine learning and predictive analysis. We still have a number of shortcomings in our modeling approach and we can further apply a number of data modeling techniques to improve this model, as we shall see in following section which is dedicated to regression analysis. 
+
+So there we have it. A predictive model for predicting house prices in a given dataset. Remember this is a very naive implementation of regression modeling. The purpose here was to get an introduction to the applications of linear algebra into machine learning and predictive analysis. We still have a number of shortcomings in our modeling approach and we can further apply a number of data modeling techniques to improve this model. 
