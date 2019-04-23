@@ -3,9 +3,9 @@
 
 ## Introduction
 
-In this lab, we shall apply regression analysis using simple matrix manipulations to fit a model to given data, and then predict new values for previously unseen data. We shall follow the approach highlighted in previous lesson where we used numpy to build the appropriate matrices and vectors and solve for the $\beta$ (unknown variables) vector. The beta vector will be used with test data to make new predictions. We shall also evaluate how good our model fit was. 
+In this lab, you'll apply regression analysis using simple matrix manipulations to fit a model to given data, and then predict new values for previously unseen data. You'll follow the approach highlighted in previous lesson where you used Numpy to build the appropriate matrices and vectors and solve for the $\beta$ (unknown variables) vector. The beta vector will be used with test data to make new predictions. You'll also evaluate the model fit.
 
-In order to make this experiment interesting. We shall use NumPy at every single stage of this experiment i.e. loading data, creating matrices, performing test train split, model fitting and evaluations.  
+In order to make this experiment interesting, you'll use NumPy at every single stage of this experiment i.e. loading data, creating matrices, performing test train split, model fitting and evaluations.  
 
 ## Objectives
 
@@ -17,6 +17,7 @@ You will be able to:
 * Make predictions from the fitted model using previously unseen input features 
 * Evaluate the fitted model by calculating the error between real and predicted values
 
+
 First let's import necessary libraries 
 
 
@@ -27,25 +28,27 @@ import numpy as np
 
 ## Dataset 
 
-The dataset we will use for this experiment is "**Sales Prices in the City of Windsor, Canada**", something very similar to the Boston Housing dataset. This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage) etc. and an output (dependent) variable, **price**. We shall formulate a linear algebra problem to find linear mappings from input to out features using the equation provided in the previous lesson. 
+The dataset you'll use for this experiment is "**Sales Prices in the City of Windsor, Canada**", something very similar to the Boston Housing dataset. This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage) etc. and an output (dependent) variable, **price**.  You'll formulate a linear algebra problem to find linear mappings from input to out features using the equation provided in the previous lesson. 
 
-This will allow us to find a relationship between house features and house price for the given data, allowing us to find unknown prices for houses, given the input features.  
+This will allow you to find a relationship between house features and house price for the given data, allowing you to find unknown prices for houses, given the input features.  
 
-A description of dataset and included features is available at [THIS LINK](https://rdrr.io/cran/Ecdat/man/Housing.html)
+A description of dataset and included features is available [here](https://rdrr.io/cran/Ecdat/man/Housing.html).
 
-In your repo, the dataset is available as `windsor_housing.csv` containing following variables:
+In your repository, the dataset is available as `windsor_housing.csv` containing following variables:
 
 there are 11 input features (first 11 columns):
 
-	lotsize	bedrooms	bathrms	stories	driveway	recroom	fullbase	gashw	airco	garagepl	prefarea
+	lotsize	bedrooms  bathrms  stories	driveway  recroom	fullbase  gashw	 airco  garagepl   prefarea
 
 and 1 output feature i.e. **price** (12th column). 
 
-The focus of this lab is not really answering a preset analytical question, but to learn how we can perform a regression experiment, similar to one we performed in statsmodels, using mathematical manipulations. So we we wont be using any Pandas or statsmodels goodness here. The key objectives here are to a) understand regression with matrix algebra, and b) Mastery in NumPy scientific computation. 
+The focus of this lab is not really answering a preset analytical question, but to learn how you can perform a regression experiment, similar to one you performed in statsmodels, using mathematical manipulations. So you won't be using any Pandas or statsmodels goodness here. The key objectives here are to 
+- understand regression with matrix algebra, and 
+- mastery in NumPy scientific computation
 
 ## Stage 1: Prepare Data for Modeling 
 
-Let's give you a head start by importing the dataset. We shall perform following steps to get the data ready for analysis:
+Let's give you a head start by importing the dataset.You'll perform following steps to get the data ready for analysis:
 
 * Initialize an empty list `data` for loading data
 * Read the csv file containing complete (raw) `windsor_housing.csv`. [Use `csv.reader()` for loading data.](https://docs.python.org/3/library/csv.html). Store this in `data` one row at a time.
@@ -54,9 +57,9 @@ Let's give you a head start by importing the dataset. We shall perform following
 
 * Append a column of all 1s to the data (bias) as the first column
 
-* Convert `data` to a numpy array and inspect first few rows 
+* Convert `data` to a Numpy array and inspect first few rows 
 
-NOTE: `read.csv()` would read the csv as a text file, so we must convert the contents to float at some stage. 
+NOTE: `read.csv()` reads the csv as a text file, so you should convert the contents to float.
 
 
 ```python
@@ -98,9 +101,9 @@ data[:5,:]
 ## Step 2: Perform a 80/20 test train Split
 
 Explore NumPy's official documentation to manually split a dataset using `numpy.random.shuffle()`,  `numpy.random.permutations()` or using simple resampling method. 
-* Perform a **RANDOM** 80/20 split on data using a method of your choice , in NumPy using one of the methods above. 
-* Create x_test, y_test, x_train and y_train arrays from the split data.
-* Inspect the contents to see if the split performed as expected. 
+* Perform a **random** 80/20 split on data using a method of your choice, in NumPy using one of the methods above
+* Create x_test, y_test, x_train and y_train arrays from the split data
+* Inspect the contents to see if the split performed as expected
 
 
 ```python
@@ -131,8 +134,8 @@ print ('x_train, y_train, x_test, y_test:', x_train.shape, y_train.shape, x_test
 
 ## Step 3: Calculate the `beta` 
 
-With our X and y in place, We can now compute our beta values with x_train and y_train as:
-#### $\beta$ = (x_train<sup>T</sup> . x_train)<sup>-1</sup> . x_train<sup>T</sup> . y_train 
+With $X$ and $y$ in place, you can now compute your beta values with $x_\text{train}$ and $y_\text{train}$ as:
+#### $\beta = (x_\text{train}^T. x_\text{train})^{-1} . x_\text{train}^T . y_\text{train}$
 
 * Using numpy operations (transpose, inverse) that we saw earlier, compute the above equation in steps.
 * Print your beta values
@@ -159,18 +162,14 @@ print(beta)
 ```
 
 ## Step 4: Make Predictions
-Great , we now have a set of coefficients that describe the linear mappings between X and y. We can now use the calculated beta values  with the test datasets that we left out to calculate y predictions. 
-For this we need to perform the following tasks:
+Great, you now have a set of coefficients that describe the linear mappings between $X$ and $y$. You can now use the calculated beta values with the test datasets that we left out to calculate $y$ predictions. Next, use all features in turn and multiply it with this beta. The result will give a prediction for each row which you can append to a new array of predictions.
 
-Now we shall all features in each row in turn and multiply it with the beta computed above. The result will give a prediction for each row which we can append to a new array of predictions.
+$\hat{y} = x\beta = \beta_0 + \beta_1 x_1 +  \beta_2 x_2 + \ldots + \beta_m x_m $ 
 
-#### $\hat{y}$ = x.$\beta$ = $\beta$<sub>0</sub> + $\beta$<sub>1</sub> . x<sub>1</sub> + $\beta$<sub>2</sub> . x<sub>2</sub> + .. + $\beta$<sub>m</sub> . x<sub>m</sub>
-
-
-* Create new empty list (y_pred) for saving predictions.
-* For each row of x_test, take the dot product of the row with beta to calculate the prediction for that row.
-* Append the predictions to y_pred.
-* Print the new set of predictions.
+* Create new empty list (`y_pred`) for saving predictions
+* For each row of x_test, take the dot product of the row with beta to calculate the prediction for that row
+* Append the predictions to `y_pred`
+* Print the new set of predictions
 
 
 ```python
@@ -183,8 +182,8 @@ for row in x_test:
 
 ## Step 5: Evaluate Model 
 
-### Visualize Actual vs. Predicted
-This is exciting, so now our model can use the beta value to predict the price of houses given the input features. Let's plot these predictions against the actual values in y_test to see how much our model deviates. 
+### Visualize Actual vs. Predicted values
+This is exciting, now your model can use the beta value to predict the price of houses given the input features. Let's plot these predictions against the actual values in `y_test` to see how much our model deviates. 
 
 
 ```python
@@ -201,16 +200,16 @@ plt.legend()
 plt.show()
 ```
 
-This doesn't look so bad, does it ? Our model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of y_test individually. That will help us calculate the RMSE value (Root Mean Squared Error) for our model. 
+This doesn't look so bad, does it? Your model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could be a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of `y_test` individually. That will help you calculate the RMSE value (Root Mean Squared Error) for your model. 
+
 ### Root Mean Squared Error
 Here is the formula for this again. 
 
-![](rmse.jpg)
+$$ \large RMSE = \sqrt{\sum^N_{i=1}\dfrac{ (\text{Predicted}_i-\text{Actual}_i)^2}{N}}$$
 
-
-* Initialize an empty array `err`.
-* for each row in y_test and y_pred, take the squared difference and append error for each row in err array. 
-* Calculate RMSE from `err` using the formula shown above. 
+* Initialize an empty array `err`
+* for each row in `y_test` and `y_pred`, take the squared difference and append error for each row in the `err` array
+* Calculate $RMSE$ from `err` using the formula shown above. 
 
 
 ```python
@@ -225,11 +224,12 @@ root_mean_sq_err
 ```
 
 ### Normalized Root Mean Squared Error
-The above error is clearly in terms of the dependant variable i.e. the final house price. We can also use a normlized mean squared error in case of multiple regression which can be calculated from RMSE using following formula:
+The above error is clearly in terms of the dependent variable i.e. the final house price. You can also use a normalized mean squared error in case of multiple regression which can be calculated from RMSE using following formula:
 
 * Calculate normalized Root Mean Squared Error
 
-<img src="nrmse.png" width=300>
+
+$$ \large NRMSE = \dfrac{RMSE}{max_i y_i - min_i y_i} $$
 
 
 ```python
@@ -238,14 +238,14 @@ root_mean_sq_err/(y_train.max() - y_train.min())
 # 0.08495931785402822
 ```
 
-SO there it is. A complete multiple regression analysis using nothing but numpy. Having good programming skills in numpy would allow to dig deeper into analytical algorithms in machine learning and deep learning. Using matrix multiplication techniques we saw here, we can easily build a whole neural network from scratch. 
+There it is. A complete multiple regression analysis using nothing but Numpy. Having good programming skills in numpy allows you to dig deeper into analytical algorithms in machine learning and deep learning. Using matrix multiplication techniques you saw here, you can easily build a whole neural network from scratch. 
 
 ## Level up - Optional 
 
-* Calculated the R_squared and adjusted R_squared for above experiment. 
-* Plot the residuals (similar to statsmodels) and comment on the variance and heteroscedascticity. 
-* Run the experiment in statsmodels and compare the performance of both approaches in terms of computational cost.
+* Calculate the R_squared and adjusted R_squared for the above experiment
+* Plot the residuals (similar to statsmodels) and comment on the variance and heteroscedascticity
+* Run the experiment in statsmodels and compare the performance of both approaches in terms of computational cost
 
 ## Summary
 
-So there we have it. A predictive model for predicting house prices in a given dataset. Remember this is a very naive implementation of regression modeling. The purpose here was to get an introduction to the applications of linear algebra into machine learning and predictive analysis. We still have a number of shortcomings in our modeling approach and we can further apply a number of data modeling techniques to improve this model.
+In this lab, you built a predictive model for predicting house prices. Remember this is a very naive implementation of regression modeling. The purpose here was to get an introduction to the applications of linear algebra into machine learning and predictive analysis. There are still have a number of shortcomings in this modeling approach and you can further apply a number of data modeling techniques to improve this model. 
