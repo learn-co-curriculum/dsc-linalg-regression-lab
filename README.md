@@ -98,6 +98,27 @@ data[:5,:]
 #         6.10e+04]])
 ```
 
+
+
+
+    array([[1.00e+00, 5.85e+03, 3.00e+00, 1.00e+00, 2.00e+00, 1.00e+00,
+            0.00e+00, 1.00e+00, 0.00e+00, 0.00e+00, 1.00e+00, 0.00e+00,
+            4.20e+04],
+           [1.00e+00, 4.00e+03, 2.00e+00, 1.00e+00, 1.00e+00, 1.00e+00,
+            0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
+            3.85e+04],
+           [1.00e+00, 3.06e+03, 3.00e+00, 1.00e+00, 1.00e+00, 1.00e+00,
+            0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
+            4.95e+04],
+           [1.00e+00, 6.65e+03, 3.00e+00, 1.00e+00, 2.00e+00, 1.00e+00,
+            1.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
+            6.05e+04],
+           [1.00e+00, 6.36e+03, 2.00e+00, 1.00e+00, 1.00e+00, 1.00e+00,
+            0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00, 0.00e+00,
+            6.10e+04]])
+
+
+
 ## Step 2: Perform a 80/20 test train Split
 
 Explore NumPy's official documentation to manually split a dataset using `numpy.random.shuffle()`,  `numpy.random.permutations()` or using simple resampling method. 
@@ -107,7 +128,7 @@ Explore NumPy's official documentation to manually split a dataset using `numpy.
 
 
 ```python
-# PErform an 80/20 split
+# Perform an 80/20 split
 training_idx = np.random.randint(data.shape[0], size=round(546*.8))
 test_idx = np.random.randint(data.shape[0], size=round(546*.2))
 training, test = data[training_idx,:], data[test_idx,:]
@@ -131,6 +152,11 @@ print ('x_train, y_train, x_test, y_test:', x_train.shape, y_train.shape, x_test
 # Train/Test Split: (437, 13) (109, 13)
 # x_train, y_train, x_test, y_test: (437, 12) (437,) (109, 12) (109,)
 ```
+
+    Raw data Shape:  (546, 13)
+    Train/Test Split: (437, 13) (109, 13)
+    x_train, y_train, x_test, y_test: (437, 12) (437,) (109, 12) (109,)
+
 
 ## Step 3: Calculate the `beta` 
 
@@ -156,10 +182,16 @@ beta = XtX_inv.dot(Xty)
 # Print the values of computed beta
 print(beta)
 
+# Due to random split, your answers may vary 
 # [-3.07118956e+03  2.13543921e+00  4.04283395e+03  1.33559881e+04
 #   5.75279185e+03  7.82810082e+03  3.73584043e+03  6.51098935e+03
 #   1.28802060e+04  1.09853850e+04  6.14947126e+03  1.05813305e+04]
 ```
+
+    [-9.35381686e+03  2.86896441e+00  3.18041652e+03  1.83392633e+04
+      6.51594815e+03  5.41538474e+03  5.28472824e+03  5.20717919e+03
+      1.33644869e+04  1.23162781e+04  4.79460621e+03  1.00292858e+04]
+
 
 ## Step 4: Make Predictions
 Great, you now have a set of coefficients that describe the linear mappings between $X$ and $y$. You can now use the calculated beta values with the test datasets that we left out to calculate $y$ predictions. Next, use all features in turn and multiply it with this beta. The result will give a prediction for each row which you can append to a new array of predictions.
@@ -200,8 +232,13 @@ plt.legend()
 plt.show()
 ```
 
-This doesn't look so bad, does it? Your model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could be a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of `y_test` individually. That will help you calculate the RMSE value (Root Mean Squared Error) for your model. 
 
+![png](index_files/index_11_0.png)
+
+
+<img src ="images/diff.png" width="750">
+
+This doesn't look so bad, does it? Your model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could be a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of `y_test` individually. That will help you calculate the RMSE value (Root Mean Squared Error) for your model. 
 ### Root Mean Squared Error
 Here is the formula for this again. 
 
@@ -223,6 +260,13 @@ root_mean_sq_err = np.sqrt(mean_sq_err)
 root_mean_sq_err
 ```
 
+
+
+
+    14862.97625486738
+
+
+
 ### Normalized Root Mean Squared Error
 The above error is clearly in terms of the dependent variable i.e. the final house price. You can also use a normalized mean squared error in case of multiple regression which can be calculated from RMSE using following formula:
 
@@ -237,6 +281,13 @@ root_mean_sq_err/(y_train.max() - y_train.min())
 
 # 0.08495931785402822
 ```
+
+
+
+
+    0.09007864396889322
+
+
 
 There it is. A complete multiple regression analysis using nothing but Numpy. Having good programming skills in numpy allows you to dig deeper into analytical algorithms in machine learning and deep learning. Using matrix multiplication techniques you saw here, you can easily build a whole neural network from scratch. 
 
