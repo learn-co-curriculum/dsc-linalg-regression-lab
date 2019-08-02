@@ -124,15 +124,12 @@ With $X$ and $y$ in place, you can now compute your beta values with $x_\text{tr
 
 # Calculated beta values
 
+
+# Due to random split, your answers may vary 
 # [-3.07118956e+03  2.13543921e+00  4.04283395e+03  1.33559881e+04
 #   5.75279185e+03  7.82810082e+03  3.73584043e+03  6.51098935e+03
 #   1.28802060e+04  1.09853850e+04  6.14947126e+03  1.05813305e+04]
 ```
-
-    [7.13503312e+03 3.14678249e+00 3.28225971e+02 1.28839251e+04
-     6.68332755e+03 3.44682885e+03 3.19440776e+03 5.07824499e+03
-     1.32822228e+04 1.10098716e+04 2.88253206e+03 9.16916600e+03]
-
 
 ## Step 4: Make Predictions
 Great, you now have a set of coefficients that describe the linear mappings between $X$ and $y$. You can now use the calculated beta values with the test datasets that we left out to calculate $y$ predictions. Next, use all features in turn and multiply it with this beta. The result will give a prediction for each row which you can append to a new array of predictions.
@@ -197,13 +194,6 @@ $$ \large NRMSE = \dfrac{RMSE}{max_i y_i - min_i y_i} $$
 
 # 0.09940553674399233
 ```
-
-
-
-
-    0.09940553674399233
-
-
 
 There it is. A complete multiple regression analysis using nothing but Numpy. Having good programming skills in numpy allows you to dig deeper into analytical algorithms in machine learning and deep learning. Using matrix multiplication techniques you saw here, you can easily build a whole neural network from scratch. 
 
