@@ -90,8 +90,8 @@ NOTE: `read.csv()` reads the csv as a text file, so you should convert the conte
 
 ## Step 2: Perform a 80/20 test train Split
 
-Explore NumPy's official documentation to manually split a dataset using `numpy.random.shuffle()`,  `numpy.random.permutations()` or using simple resampling method. 
-* Perform a **random** 80/20 split on data using a method of your choice, in NumPy using one of the methods above
+Explore NumPy's official documentation to manually split a dataset using a random sampling method of your choice. Some useful methods are located in the [numpy.random library](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html).
+* Perform a **random** 80/20 split on data using a method of your choice in NumPy
 * Create x_test, y_test, x_train and y_train arrays from the split data
 * Inspect the contents to see if the split performed as expected
 
@@ -126,9 +126,9 @@ With $X$ and $y$ in place, you can now compute your beta values with $x_\text{tr
 
 
 # Due to random split, your answers may vary 
-# [-3.07118956e+03  2.13543921e+00  4.04283395e+03  1.33559881e+04
-#   5.75279185e+03  7.82810082e+03  3.73584043e+03  6.51098935e+03
-#   1.28802060e+04  1.09853850e+04  6.14947126e+03  1.05813305e+04]
+# [-4.48935874e+03  3.25291905e+00  2.51041471e+03  1.38887244e+04
+#  6.36181829e+03  7.97134681e+03  6.73696187e+03  4.00955575e+03
+#  8.67978657e+03  1.26886121e+04  4.20044707e+03  8.63557510e+03]
 ```
 
 ## Step 4: Make Predictions
@@ -175,7 +175,7 @@ $$ \large RMSE = \sqrt{\sum^N_{i=1}\dfrac{ (\text{Predicted}_i-\text{Actual}_i)^
 
 # Due to random split, your answers may vary 
 
-# RMSE = 16401.913562758735
+# RMSE = 16585.59639547113
 ```
 
 ### Normalized Root Mean Squared Error
@@ -192,7 +192,7 @@ $$ \large NRMSE = \dfrac{RMSE}{max_i y_i - min_i y_i} $$
 
 # Due to random split, your answers may vary 
 
-# 0.09940553674399233
+# 0.10051876603315836
 ```
 
 There it is. A complete multiple regression analysis using nothing but Numpy. Having good programming skills in numpy allows you to dig deeper into analytical algorithms in machine learning and deep learning. Using matrix multiplication techniques you saw here, you can easily build a whole neural network from scratch. 
