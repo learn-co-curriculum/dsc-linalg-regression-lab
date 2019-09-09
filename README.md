@@ -156,8 +156,8 @@ data[:5,:]
 
 ## Step 2: Perform a 80/20 test train Split
 
-Explore NumPy's official documentation to manually split a dataset using `numpy.random.shuffle()`,  `numpy.random.permutations()` or using simple resampling method. 
-* Perform a **random** 80/20 split on data using a method of your choice, in NumPy using one of the methods above
+Explore NumPy's official documentation to manually split a dataset using a random sampling method of your choice. Some useful methods are located in the [numpy.random library](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html).
+* Perform a **random** 80/20 split on data using a method of your choice in NumPy
 * Create x_test, y_test, x_train and y_train arrays from the split data
 * Inspect the contents to see if the split performed as expected
 
@@ -178,8 +178,13 @@ Explore NumPy's official documentation to manually split a dataset using `numpy.
 ```python
 # __SOLUTION__ 
 # Perform an 80/20 split
-training_idx = np.random.randint(data.shape[0], size=round(546*.8))
-test_idx = np.random.randint(data.shape[0], size=round(546*.2))
+# Make array of indices
+all_idx = np.arange(data.shape[0])
+# Randomly choose 80% subset of indices without replacement for training
+training_idx = np.random.choice(all_idx, size=round(546*.8), replace=False)
+# Choose remaining 20% of indices for testing
+test_idx = all_idx[~np.isin(all_idx, training_idx)]
+# Subset data 
 training, test = data[training_idx,:], data[test_idx,:]
 
 # Check the shape of datasets
@@ -195,7 +200,6 @@ y_test = test[:,-1]
 
 # Check the shape of datasets
 print ('x_train, y_train, x_test, y_test:', x_train.shape, y_train.shape, x_test.shape, y_test.shape)
-
 
 # Raw data Shape:  (546, 13)
 # Train/Test Split: (437, 13) (109, 13)
@@ -225,9 +229,9 @@ With $X$ and $y$ in place, you can now compute your beta values with $x_\text{tr
 
 
 # Due to random split, your answers may vary 
-# [-3.07118956e+03  2.13543921e+00  4.04283395e+03  1.33559881e+04
-#   5.75279185e+03  7.82810082e+03  3.73584043e+03  6.51098935e+03
-#   1.28802060e+04  1.09853850e+04  6.14947126e+03  1.05813305e+04]
+# [-4.48935874e+03  3.25291905e+00  2.51041471e+03  1.38887244e+04
+#  6.36181829e+03  7.97134681e+03  6.73696187e+03  4.00955575e+03
+#  8.67978657e+03  1.26886121e+04  4.20044707e+03  8.63557510e+03]
 ```
 
 
@@ -248,14 +252,14 @@ beta = XtX_inv.dot(Xty)
 print(beta)
 
 # Due to random split, your answers may vary 
-# [-3.07118956e+03  2.13543921e+00  4.04283395e+03  1.33559881e+04
-#   5.75279185e+03  7.82810082e+03  3.73584043e+03  6.51098935e+03
-#   1.28802060e+04  1.09853850e+04  6.14947126e+03  1.05813305e+04]
+# [-4.48935874e+03  3.25291905e+00  2.51041471e+03  1.38887244e+04
+#  6.36181829e+03  7.97134681e+03  6.73696187e+03  4.00955575e+03
+#  8.67978657e+03  1.26886121e+04  4.20044707e+03  8.63557510e+03]
 ```
 
-    [-9.35381686e+03  2.86896441e+00  3.18041652e+03  1.83392633e+04
-      6.51594815e+03  5.41538474e+03  5.28472824e+03  5.20717919e+03
-      1.33644869e+04  1.23162781e+04  4.79460621e+03  1.00292858e+04]
+    [-4.48935874e+03  3.25291905e+00  2.51041471e+03  1.38887244e+04
+      6.36181829e+03  7.97134681e+03  6.73696187e+03  4.00955575e+03
+      8.67978657e+03  1.26886121e+04  4.20044707e+03  8.63557510e+03]
 
 
 ## Step 4: Make Predictions
@@ -311,7 +315,7 @@ plt.show()
 ```
 
 
-![png](index_files/index_17_0.png)
+    <Figure size 1500x1000 with 1 Axes>
 
 
 <img src ="images/diff.png" width="750">
@@ -332,12 +336,13 @@ $$ \large RMSE = \sqrt{\sum^N_{i=1}\dfrac{ (\text{Predicted}_i-\text{Actual}_i)^
 
 # Due to random split, your answers may vary 
 
-# RMSE = 16401.913562758735
+# RMSE = 16585.59639547113
 ```
 
 
 ```python
 # __SOLUTION__ 
+# Due to random split, your answers may vary 
 # Calculate RMSE
 err = []
 for pred,actual in zip(y_pred,y_test):
@@ -351,7 +356,7 @@ root_mean_sq_err
 
 
 
-    14862.97625486738
+    16585.59639547113
 
 
 
@@ -369,21 +374,22 @@ $$ \large NRMSE = \dfrac{RMSE}{max_i y_i - min_i y_i} $$
 
 # Due to random split, your answers may vary 
 
-# 0.09940553674399233
+# 0.10051876603315836
 ```
 
 
 ```python
 # __SOLUTION__ 
+# Due to random split, your answers may vary 
 root_mean_sq_err/(y_train.max() - y_train.min())
 
-# 0.08495931785402822
+# 0.10051876603315836
 ```
 
 
 
 
-    0.09007864396889322
+    0.10051876603315836
 
 
 
