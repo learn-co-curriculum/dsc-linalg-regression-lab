@@ -3,9 +3,9 @@
 
 ## Introduction
 
-In this lab, you'll apply regression analysis using simple matrix manipulations to fit a model to given data, and then predict new values for previously unseen data. You'll follow the approach highlighted in previous lesson where you used Numpy to build the appropriate matrices and vectors and solve for the $\beta$ (unknown variables) vector. The beta vector will be used with test data to make new predictions. You'll also evaluate the model fit.
-
-In order to make this experiment interesting, you'll use NumPy at every single stage of this experiment i.e. loading data, creating matrices, performing test train split, model fitting and evaluations.  
+In this lab, you'll apply regression analysis using simple matrix manipulations to fit a model to given data, and then predict new values for previously unseen data. You'll follow the approach highlighted in the previous lesson where you used Numpy to build the appropriate matrices and vectors and solve for the $\beta$ (unknown variables) vector. The beta vector will be used with test data to make new predictions. You'll also evaluate the model fit.
+In order to make this experiment interesting, you'll use NumPy at every single stage of this experiment i.e. loading data, creating matrices, performing test train split, model fitting, and evaluations.
+  
 
 ## Objectives
 
@@ -18,7 +18,7 @@ You will be able to:
 * Evaluate the fitted model by calculating the error between real and predicted values
 
 
-First let's import necessary libraries 
+First, let's import necessary libraries 
 
 
 ```python
@@ -28,13 +28,13 @@ import numpy as np
 
 ## Dataset 
 
-The dataset you'll use for this experiment is "**Sales Prices in the City of Windsor, Canada**", something very similar to the Boston Housing dataset. This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage) etc. and an output (dependent) variable, **price**.  You'll formulate a linear algebra problem to find linear mappings from input to out features using the equation provided in the previous lesson. 
+The dataset you'll use for this experiment is "**Sales Prices in the City of Windsor, Canada**", something very similar to the Boston Housing dataset. This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage), etc. and an output (dependent) variable, **price**.  You'll formulate a linear algebra problem to find linear mappings from input to out features using the equation provided in the previous lesson. 
 
 This will allow you to find a relationship between house features and house price for the given data, allowing you to find unknown prices for houses, given the input features.  
 
-A description of dataset and included features is available [here](https://rdrr.io/cran/Ecdat/man/Housing.html).
+A description of the dataset and included features is available [here](https://rdrr.io/cran/Ecdat/man/Housing.html).
 
-In your repository, the dataset is available as `windsor_housing.csv` containing following variables:
+In your repository, the dataset is available as `windsor_housing.csv` containing the following variables:
 
 there are 11 input features (first 11 columns):
 
@@ -42,13 +42,13 @@ there are 11 input features (first 11 columns):
 
 and 1 output feature i.e. **price** (12th column). 
 
-The focus of this lab is not really answering a preset analytical question, but to learn how you can perform a regression experiment, similar to one you performed in statsmodels, using mathematical manipulations. So you won't be using any Pandas or statsmodels goodness here. The key objectives here are to 
-- understand regression with matrix algebra, and 
+The focus of this lab is not really answering a preset analytical question, but to learn how you can perform a regression experiment, similar to the one you performed in statsmodels, using mathematical manipulations. So you won't be using any Pandas or statsmodels goodness here. The key objectives here are to 
+- understand regression with matrix algebra and 
 - mastery in NumPy scientific computation
 
 ## Stage 1: Prepare Data for Modeling 
 
-Let's give you a head start by importing the dataset.You'll perform following steps to get the data ready for analysis:
+Let's give you a head start by importing the dataset. You'll perform the following steps to get the data ready for analysis:
 
 * Initialize an empty list `data` for loading data
 * Read the csv file containing complete (raw) `windsor_housing.csv`. [Use `csv.reader()` for loading data.](https://docs.python.org/3/library/csv.html). Store this in `data` one row at a time.
@@ -136,7 +136,7 @@ Great, you now have a set of coefficients that describe the linear mappings betw
 
 $\hat{y} = x\beta = \beta_0 + \beta_1 x_1 +  \beta_2 x_2 + \ldots + \beta_m x_m $ 
 
-* Create new empty list (`y_pred`) for saving predictions
+* Create a new empty list (`y_pred`) for saving predictions
 * For each row of x_test, take the dot product of the row with beta to calculate the prediction for that row
 * Append the predictions to `y_pred`
 * Print the new set of predictions
@@ -179,7 +179,7 @@ $$ \large RMSE = \sqrt{\sum^N_{i=1}\dfrac{ (\text{Predicted}_i-\text{Actual}_i)^
 ```
 
 ### Normalized Root Mean Squared Error
-The above error is clearly in terms of the dependent variable i.e. the final house price. You can also use a normalized mean squared error in case of multiple regression which can be calculated from RMSE using following formula:
+The above error is clearly in terms of the dependent variable i.e. the final house price. You can also use a normalized mean squared error in case of multiple regression which can be calculated from RMSE using following the formula:
 
 * Calculate normalized Root Mean Squared Error
 
@@ -200,9 +200,14 @@ There it is. A complete multiple regression analysis using nothing but Numpy. Ha
 ## Level up - Optional 
 
 * Calculate the R_squared and adjusted R_squared for the above experiment
-* Plot the residuals (similar to statsmodels) and comment on the variance and heteroscedascticity
+* Plot the residuals (similar to statsmodels) and comment on the variance and heteroscedasticity
 * Run the experiment in statsmodels and compare the performance of both approaches in terms of computational cost
 
 ## Summary
 
 In this lab, you built a predictive model for predicting house prices. Remember this is a very naive implementation of regression modeling. The purpose here was to get an introduction to the applications of linear algebra into machine learning and predictive analysis. There are still have a number of shortcomings in this modeling approach and you can further apply a number of data modeling techniques to improve this model. 
+
+
+```python
+
+```
