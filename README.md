@@ -1,4 +1,3 @@
-
 # Regression with Linear Algebra - Lab
 
 ## Introduction
@@ -31,7 +30,7 @@ import numpy as np
 
 ## Dataset 
 
-The dataset you'll use for this experiment is "**Sales Prices in the City of Windsor, Canada**", something very similar to the Boston Housing dataset. This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage), etc. and an output (dependent) variable, **price**.  You'll formulate a linear algebra problem to find linear mappings from input features using the equation provided in the previous lesson. 
+The dataset you'll use for this experiment is "**Sales Prices in the City of Windsor, Canada**". This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage), etc. and an output (dependent) variable, **price**.  You'll formulate a linear algebra problem to find linear mappings from input features using the equation provided in the previous lesson. 
 
 This will allow you to find a relationship between house features and house price for the given data, allowing you to find unknown prices for houses, given the input features.  
 
@@ -288,7 +287,9 @@ plt.show()
 ```
 
 
+    
 ![png](index_files/index_17_0.png)
+    
 
 
 This doesn't look so bad, does it? Your model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could be a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of `y_test` individually. That will help you calculate the RMSE value (root mean squared error) for your model. 
