@@ -1,4 +1,3 @@
-
 # Regression with Linear Algebra - Lab
 
 ## Introduction
@@ -24,7 +23,7 @@ import numpy as np
 
 ## Dataset 
 
-The dataset you'll use for this experiment is "**Sales Prices in the City of Windsor, Canada**", something very similar to the Boston Housing dataset. This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage), etc. and an output (dependent) variable, **price**.  You'll formulate a linear algebra problem to find linear mappings from input features using the equation provided in the previous lesson. 
+The dataset you'll use for this experiment is "**Sales Prices in the City of Windsor, Canada**". This dataset contains a number of input (independent) variables, including area, number of bedrooms/bathrooms, facilities(AC/garage), etc. and an output (dependent) variable, **price**.  You'll formulate a linear algebra problem to find linear mappings from input features using the equation provided in the previous lesson. 
 
 This will allow you to find a relationship between house features and house price for the given data, allowing you to find unknown prices for houses, given the input features.  
 
