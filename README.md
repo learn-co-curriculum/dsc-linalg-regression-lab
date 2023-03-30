@@ -17,7 +17,7 @@ First, let's import necessary libraries:
 
 
 ```python
-import csv # for reading csv file
+import csv  # for reading csv file
 import numpy as np
 ```
 
@@ -60,10 +60,7 @@ Let's give you a head start by importing the dataset. You'll perform the followi
 # Your code here
 
 
-
-
-
-# First 5 rows of raw data 
+# First 5 rows of raw data
 
 # array([[1.00e+00, 5.85e+03, 3.00e+00, 1.00e+00, 2.00e+00, 1.00e+00,
 #         0.00e+00, 1.00e+00, 0.00e+00, 0.00e+00, 1.00e+00, 0.00e+00,
@@ -93,8 +90,7 @@ Explore NumPy's official documentation to manually split a dataset using a rando
 
 
 ```python
-# Your code here 
-
+# Your code here
 
 
 # Split results
@@ -113,13 +109,11 @@ With $X$ and $y$ in place, you can now compute your beta values with $x_\text{tr
 
 
 ```python
-# Your code here 
-
-
+# Your code here
 
 
 # Beta values
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # [-5.46637290e+03  3.62457767e+00  2.75100964e+03  1.47223649e+04
 #   5.97774591e+03  5.71916945e+03  5.73109882e+03  3.83586258e+03
 #   8.12674607e+03  1.33296437e+04  3.74995169e+03  1.01514699e+04]
@@ -137,7 +131,7 @@ $\hat{y} = x\beta = \beta_0 + \beta_1 x_1 +  \beta_2 x_2 + \ldots + \beta_m x_m 
 
 
 ```python
-# Your code here 
+# Your code here
 ```
 
 ## Step 5: Evaluate model 
@@ -148,7 +142,6 @@ This is exciting, now your model can use the beta value to predict the price of 
 
 ```python
 # Plot predicted and actual values as line plots
-
 ```
 
 This doesn't look so bad, does it? Your model, although isn't perfect at this stage, is making a good attempt to predict house prices although a few prediction seem a bit out. There could be a number of reasons for this. Let's try to dig a bit deeper to check model's predictive abilities by comparing these prediction with actual values of `y_test` individually. That will help you calculate the RMSE value (root mean squared error) for your model. 
@@ -166,7 +159,7 @@ $$ \large RMSE = \sqrt{\sum^N_{i=1}\dfrac{ (\text{Predicted}_i-\text{Actual}_i)^
 ```python
 # Calculate RMSE
 
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # RMSE = 14868.172645765708
 ```
 
@@ -179,9 +172,9 @@ $$ \large NRMSE = \dfrac{RMSE}{max_i y_i - min_i y_i} $$
 
 
 ```python
-# Calculate NRMSE
+# Calculate NRMSE
 
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # 0.09011013724706489
 ```
 
