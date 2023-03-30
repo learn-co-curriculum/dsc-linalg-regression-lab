@@ -17,14 +17,14 @@ First, let's import necessary libraries:
 
 
 ```python
-import csv # for reading csv file
+import csv  # for reading csv file
 import numpy as np
 ```
 
 
 ```python
-# __SOLUTION__ 
-import csv # for reading csv file
+# __SOLUTION__
+import csv  # for reading csv file
 import numpy as np
 ```
 
@@ -67,10 +67,7 @@ Let's give you a head start by importing the dataset. You'll perform the followi
 # Your code here
 
 
-
-
-
-# First 5 rows of raw data 
+# First 5 rows of raw data
 
 # array([[1.00e+00, 5.85e+03, 3.00e+00, 1.00e+00, 2.00e+00, 1.00e+00,
 #         0.00e+00, 1.00e+00, 0.00e+00, 0.00e+00, 1.00e+00, 0.00e+00,
@@ -91,24 +88,24 @@ Let's give you a head start by importing the dataset. You'll perform the followi
 
 
 ```python
-# __SOLUTION__ 
-# Create Empty lists for storing X and y values 
+# __SOLUTION__
+# Create Empty lists for storing X and y values
 data = []
 
 # Read the data from the csv file
-with open('windsor_housing.csv') as f:
+with open("windsor_housing.csv") as f:
     raw = csv.reader(f)
-    # Drop the very first line as it contains names for columns - not actual data 
+    # Drop the very first line as it contains names for columns - not actual data
     next(raw)
     # Read one row at a time. Append one to each row
     for row in raw:
         ones = [1.0]
         for r in row:
             ones.append(float(r))
-        # Append the row to data 
+        # Append the row to data
         data.append(ones)
 data = np.array(data)
-data[:5,:]
+data[:5, :]
 ```
 
 
@@ -143,8 +140,7 @@ Explore NumPy's official documentation to manually split a dataset using a rando
 
 
 ```python
-# Your code here 
-
+# Your code here
 
 
 # Split results
@@ -155,32 +151,38 @@ Explore NumPy's official documentation to manually split a dataset using a rando
 
 
 ```python
-# __SOLUTION__ 
+# __SOLUTION__
 # Set a seed
 np.random.seed(42)
 # Perform an 80/20 split
 # Make array of indices
 all_idx = np.arange(data.shape[0])
 # Randomly choose 80% subset of indices without replacement for training
-training_idx = np.random.choice(all_idx, size=round(546*.8), replace=False)
+training_idx = np.random.choice(all_idx, size=round(546 * 0.8), replace=False)
 # Choose remaining 20% of indices for testing
 test_idx = all_idx[~np.isin(all_idx, training_idx)]
-# Subset data 
-training, test = data[training_idx,:], data[test_idx,:]
+# Subset data
+training, test = data[training_idx, :], data[test_idx, :]
 
 # Check the shape of datasets
-print ('Raw data Shape: ', data.shape)
-print ('Train/Test Split:', training.shape, test.shape)
+print("Raw data Shape: ", data.shape)
+print("Train/Test Split:", training.shape, test.shape)
 
 # Create x and y for test and training sets
-x_train = training[:,:-1]
-y_train = training [:,-1]
+x_train = training[:, :-1]
+y_train = training[:, -1]
 
-x_test = test[:,:-1]
-y_test = test[:,-1]
+x_test = test[:, :-1]
+y_test = test[:, -1]
 
 # Check the shape of datasets
-print ('x_train, y_train, x_test, y_test:', x_train.shape, y_train.shape, x_test.shape, y_test.shape)
+print(
+    "x_train, y_train, x_test, y_test:",
+    x_train.shape,
+    y_train.shape,
+    x_test.shape,
+    y_test.shape,
+)
 ```
 
     Raw data Shape:  (546, 13)
@@ -198,13 +200,11 @@ With $X$ and $y$ in place, you can now compute your beta values with $x_\text{tr
 
 
 ```python
-# Your code here 
-
-
+# Your code here
 
 
 # Beta values
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # [-5.46637290e+03  3.62457767e+00  2.75100964e+03  1.47223649e+04
 #   5.97774591e+03  5.71916945e+03  5.73109882e+03  3.83586258e+03
 #   8.12674607e+03  1.33296437e+04  3.74995169e+03  1.01514699e+04]
@@ -212,11 +212,11 @@ With $X$ and $y$ in place, you can now compute your beta values with $x_\text{tr
 
 
 ```python
-# __SOLUTION__ 
+# __SOLUTION__
 # Calculate Xt.X and Xt.y for beta = (XT . X)-1 . XT . y - as seen in previous lessons
 Xt = np.transpose(x_train)
-XtX = np.dot(Xt,x_train)
-Xty = np.dot(Xt,y_train)
+XtX = np.dot(Xt, x_train)
+Xty = np.dot(Xt, y_train)
 
 # Calculate inverse of Xt.X
 XtX_inv = np.linalg.inv(XtX)
@@ -245,12 +245,12 @@ $\hat{y} = x\beta = \beta_0 + \beta_1 x_1 +  \beta_2 x_2 + \ldots + \beta_m x_m 
 
 
 ```python
-# Your code here 
+# Your code here
 ```
 
 
 ```python
-# __SOLUTION__ 
+# __SOLUTION__
 # Calculate and print predictions for each row of X_test
 y_pred = []
 for row in x_test:
@@ -266,22 +266,23 @@ This is exciting, now your model can use the beta value to predict the price of 
 
 ```python
 # Plot predicted and actual values as line plots
-
 ```
 
 
 ```python
-# __SOLUTION__ 
+# __SOLUTION__
 # Plot predicted and actual values as line plots
 import matplotlib.pyplot as plt
+
 %matplotlib inline
 from pylab import rcParams
-rcParams['figure.figsize'] = 15, 10
-plt.style.use('ggplot')
 
-plt.plot(y_pred, linestyle='-', marker='o', label='predictions')
-plt.plot(y_test, linestyle='-', marker='o', label='actual values')
-plt.title('Actual vs. predicted values')
+rcParams["figure.figsize"] = 15, 10
+plt.style.use("ggplot")
+
+plt.plot(y_pred, linestyle="-", marker="o", label="predictions")
+plt.plot(y_test, linestyle="-", marker="o", label="actual values")
+plt.title("Actual vs. predicted values")
 plt.legend()
 plt.show()
 ```
@@ -307,24 +308,24 @@ $$ \large RMSE = \sqrt{\sum^N_{i=1}\dfrac{ (\text{Predicted}_i-\text{Actual}_i)^
 ```python
 # Calculate RMSE
 
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # RMSE = 14868.172645765708
 ```
 
 
 ```python
-# __SOLUTION__ 
-# Due to random split, your answers may vary 
+# __SOLUTION__
+# Due to random split, your answers may vary
 # Calculate RMSE
 err = []
-for pred,actual in zip(y_pred,y_test):
+for pred, actual in zip(y_pred, y_test):
     sq_err = (pred - actual) ** 2
     err.append(sq_err)
 mean_sq_err = np.array(err).mean()
 root_mean_sq_err = np.sqrt(mean_sq_err)
 root_mean_sq_err
 
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # RMSE = 14868.172645765708
 ```
 
@@ -344,19 +345,19 @@ $$ \large NRMSE = \dfrac{RMSE}{max_i y_i - min_i y_i} $$
 
 
 ```python
-# Calculate NRMSE
+# Calculate NRMSE
 
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # 0.09011013724706489
 ```
 
 
 ```python
-# __SOLUTION__ 
+# __SOLUTION__
 
-root_mean_sq_err/(y_train.max() - y_train.min())
+root_mean_sq_err / (y_train.max() - y_train.min())
 
-# Due to random split, your answers may vary 
+# Due to random split, your answers may vary
 # 0.09011013724706489
 ```
 
