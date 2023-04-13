@@ -268,7 +268,7 @@ $$ \large NRMSE = \dfrac{RMSE}{max_i y_i - min_i y_i} $$
 
 ```python
 
-root_mean_sq_err / (y_train.max() - y_train.min())
+root_mean_sq_err / (y_test.max() - y_test.min())
 
 # Due to random split, your answers may vary
 # 0.09011013724706489
